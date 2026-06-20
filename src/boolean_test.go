@@ -54,4 +54,64 @@ var _ = ginkgo.Describe("Boolean", func() {
 	ginkgo.It("can inspect its data", func() {
 		gomega.Expect(Boolean.True().Inspect().Data().Payload()).To(gomega.ContainSubstring("value"))
 	})
+	ginkgo.It("computes logical AND over the truth table", func() {
+		gomega.Expect(Boolean.True().And(Boolean.True()).ToGoBool()).To(gomega.BeTrue())
+		gomega.Expect(Boolean.True().And(Boolean.False()).ToGoBool()).To(gomega.BeFalse())
+		gomega.Expect(Boolean.False().And(Boolean.True()).ToGoBool()).To(gomega.BeFalse())
+		gomega.Expect(Boolean.False().And(Boolean.False()).ToGoBool()).To(gomega.BeFalse())
+	})
+	ginkgo.It("computes logical OR over the truth table", func() {
+		gomega.Expect(Boolean.True().Or(Boolean.True()).ToGoBool()).To(gomega.BeTrue())
+		gomega.Expect(Boolean.True().Or(Boolean.False()).ToGoBool()).To(gomega.BeTrue())
+		gomega.Expect(Boolean.False().Or(Boolean.True()).ToGoBool()).To(gomega.BeTrue())
+		gomega.Expect(Boolean.False().Or(Boolean.False()).ToGoBool()).To(gomega.BeFalse())
+	})
+	ginkgo.It("computes logical NOT", func() {
+		gomega.Expect(Boolean.True().Not().ToGoBool()).To(gomega.BeFalse())
+		gomega.Expect(Boolean.False().Not().ToGoBool()).To(gomega.BeTrue())
+	})
+	ginkgo.It("computes exclusive OR over the truth table", func() {
+		gomega.Expect(Boolean.True().Xor(Boolean.True()).ToGoBool()).To(gomega.BeFalse())
+		gomega.Expect(Boolean.True().Xor(Boolean.False()).ToGoBool()).To(gomega.BeTrue())
+		gomega.Expect(Boolean.False().Xor(Boolean.True()).ToGoBool()).To(gomega.BeTrue())
+		gomega.Expect(Boolean.False().Xor(Boolean.False()).ToGoBool()).To(gomega.BeFalse())
+	})
+	ginkgo.It("reports that a real Boolean is not null", func() {
+		gomega.Expect(Boolean.True().IsNull()).To(gomega.BeFalse())
+		gomega.Expect(Boolean.False().IsNull()).To(gomega.BeFalse())
+	})
+
+	ginkgo.Context("the Null-Object Boolean", func() {
+		ginkgo.It("reports that it is null", func() {
+			gomega.Expect(Boolean.Null().IsNull()).To(gomega.BeTrue())
+		})
+		ginkgo.It("is neither true nor false", func() {
+			gomega.Expect(Boolean.Null().IsTrue()).To(gomega.BeFalse())
+			gomega.Expect(Boolean.Null().IsFalse()).To(gomega.BeFalse())
+		})
+		ginkgo.It("renders as the null literal", func() {
+			gomega.Expect(Boolean.Null().ToGoString()).To(gomega.Equal("\"null\""))
+		})
+		ginkgo.It("has a false Go bool value", func() {
+			gomega.Expect(Boolean.Null().ToGoBool()).To(gomega.BeFalse())
+		})
+		ginkgo.It("returns the null Boolean from Equal", func() {
+			gomega.Expect(Boolean.Null().Equal(Boolean.True()).IsNull()).To(gomega.BeTrue())
+		})
+		ginkgo.It("returns the null Boolean from And", func() {
+			gomega.Expect(Boolean.Null().And(Boolean.True()).IsNull()).To(gomega.BeTrue())
+		})
+		ginkgo.It("returns the null Boolean from Or", func() {
+			gomega.Expect(Boolean.Null().Or(Boolean.True()).IsNull()).To(gomega.BeTrue())
+		})
+		ginkgo.It("returns the null Boolean from Not", func() {
+			gomega.Expect(Boolean.Null().Not().IsNull()).To(gomega.BeTrue())
+		})
+		ginkgo.It("returns the null Boolean from Xor", func() {
+			gomega.Expect(Boolean.Null().Xor(Boolean.True()).IsNull()).To(gomega.BeTrue())
+		})
+		ginkgo.It("can inspect its data", func() {
+			gomega.Expect(Boolean.Null().Inspect().Data().Payload()).To(gomega.ContainSubstring("null"))
+		})
+	})
 })
