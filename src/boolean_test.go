@@ -36,6 +36,15 @@ var _ = ginkgo.Describe("Boolean", func() {
 	ginkgo.It("can tell if a false Boolean value is false", func() {
 		gomega.Expect(Boolean.False().IsFalse()).To(gomega.BeTrue())
 	})
+	ginkgo.It("renders its Go string form", func() {
+		gomega.Expect(Boolean.True().ToGoString()).To(gomega.Equal("\"true\""))
+		gomega.Expect(Boolean.False().ToGoString()).To(gomega.Equal("\"false\""))
+	})
+	ginkgo.It("can tell whether it equals another Boolean", func() {
+		gomega.Expect(Boolean.True().Equal(Boolean.True()).IsTrue()).To(gomega.BeTrue())
+		gomega.Expect(Boolean.True().Equal(Boolean.False()).IsTrue()).To(gomega.BeFalse())
+		gomega.Expect(Boolean.False().Equal(Boolean.False()).IsTrue()).To(gomega.BeTrue())
+	})
 	ginkgo.It("can inspect its type", func() {
 		gomega.Expect(Boolean.True().Inspect().Type().ToGoString()).To(gomega.ContainSubstring("Boolean"))
 	})
