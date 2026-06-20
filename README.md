@@ -77,3 +77,7 @@ func main() {
 false (`IsTrue()` and `IsFalse()` are both `false`), `ToGoString()` renders
 `"null"`, and every logical operator returns the null `Boolean`. `IsNull()`
 reports `true` for it.
+
+## License
+
+BSD-3-Clause © the go-composites/boolean authors.
