@@ -37,12 +37,12 @@ var _ = ginkgo.Describe("Boolean", func() {
 		gomega.Expect(Boolean.False().IsFalse()).To(gomega.BeTrue())
 	})
 	ginkgo.It("can inspect its type", func() {
-		gomega.Expect(Boolean.True().Inspect().Type()).To(gomega.ContainSubstring("Boolean"))
+		gomega.Expect(Boolean.True().Inspect().Type().ToGoString()).To(gomega.ContainSubstring("Boolean"))
 	})
 	ginkgo.It("can inspect its address", func() {
-		gomega.Expect(Boolean.True().Inspect().Addr()).To(gomega.ContainSubstring("0x"))
+		gomega.Expect(Boolean.True().Inspect().Addr().ToGoString()).To(gomega.ContainSubstring("0x"))
 	})
 	ginkgo.It("can inspect its data", func() {
-		gomega.Expect(Boolean.True().Inspect().Data()).To(gomega.ContainSubstring("value"))
+		gomega.Expect(Boolean.True().Inspect().Data().Payload()).To(gomega.ContainSubstring("value"))
 	})
 })
