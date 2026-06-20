@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/golang-cop/brand/main/social/golang-oop.png" alt="golang-cop/boolean" width="720"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/golang-cop/brand/main/social/golang-cop.png" alt="golang-cop/boolean" width="720"></p>
 
 # Boolean
 
@@ -11,7 +11,7 @@ package main
 
 import (
     "fmt"
-    Boolean "github.com/golang-oop/boolean/src
+    Boolean "github.com/golang-cop/boolean/src
 )
 
 func main() {

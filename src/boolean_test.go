@@ -1,7 +1,7 @@
 package Boolean_test
 
 import (
-	Boolean "github.com/golang-oop/boolean/src"
+	Boolean "github.com/golang-cop/boolean/src"
 
 	"github.com/onsi/ginkgo/v2"
 	"github.com/onsi/gomega"

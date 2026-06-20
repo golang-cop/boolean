@@ -1,15 +1,15 @@
-module github.com/golang-oop/boolean
+module github.com/golang-cop/boolean
 
 go 1.21.6
 
 require (
 	github.com/davecgh/go-spew v1.1.1
-	github.com/golang-oop/array v0.0.0-20240527144000-f296dc8e9367
-	github.com/golang-oop/error v0.0.0-20240527134905-0411e80eb557
-	github.com/golang-oop/null v0.0.0-20240527135322-5ea6aaed8bf9
-	github.com/golang-oop/result v0.0.0-20240529151351-56a1c830a7a6
-	github.com/golang-oop/string v0.0.0-20240529142827-cf533e55381a
-	github.com/onsi/ginkgo/v2 v2.18.0
+	github.com/golang-cop/array v0.0.0-20260620105458-5172162df2b0
+	github.com/golang-cop/error v0.0.0-20260620105024-d38e22783f5a
+	github.com/golang-cop/null v0.0.0-20260620105026-e14401166a2e
+	github.com/golang-cop/result v0.0.0-20260620105222-42aa7937a16c
+	github.com/golang-cop/string v0.0.0-20260620105609-9408107ffe94
+	github.com/onsi/ginkgo/v2 v2.19.0
 	github.com/onsi/gomega v1.33.1
 )
 

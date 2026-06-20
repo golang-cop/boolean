@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	Boolean "github.com/golang-oop/boolean/src"
+	Boolean "github.com/golang-cop/boolean/src"
 )
 
 func main() {

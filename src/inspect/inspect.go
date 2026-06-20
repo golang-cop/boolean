@@ -9,13 +9,13 @@ import (
 	"reflect"
 
 	"github.com/davecgh/go-spew/spew"
-	Array "github.com/golang-oop/array/src"
-	Error "github.com/golang-oop/error/src"
-	MethodNotImplemented "github.com/golang-oop/error/src/method_not_implemented"
-	NullError "github.com/golang-oop/error/src/null"
-	Null "github.com/golang-oop/null/src"
-	Result "github.com/golang-oop/result/src"
-	String "github.com/golang-oop/string/src"
+	Array "github.com/golang-cop/array/src"
+	Error "github.com/golang-cop/error/src"
+	MethodNotImplemented "github.com/golang-cop/error/src/method_not_implemented"
+	NullError "github.com/golang-cop/error/src/null"
+	Null "github.com/golang-cop/null/src"
+	Result "github.com/golang-cop/result/src"
+	String "github.com/golang-cop/string/src"
 )
 
 type Interface interface {
