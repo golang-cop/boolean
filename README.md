@@ -2,6 +2,8 @@
 
 # Boolean
 
+[![ci](https://github.com/go-composites/boolean/actions/workflows/ci.yml/badge.svg)](https://github.com/go-composites/boolean/actions/workflows/ci.yml)
+
 ## Usage
 
 > [!NOTE] main.go
