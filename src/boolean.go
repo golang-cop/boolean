@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/davecgh/go-spew/spew"
-	Inspect "github.com/golang-cop/boolean/src/inspect"
+	Inspect "github.com/go-composites/boolean/src/inspect"
 )
 
 type Interface interface {

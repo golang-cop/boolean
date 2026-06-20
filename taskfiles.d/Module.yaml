@@ -6,7 +6,7 @@ tasks:
     cmds:
     - |
     
-      go mod init github.com/golang-cop/boolean
+      go mod init github.com/go-composites/boolean
 
   requirements:
     desc: Add module requirements and sums
@@ -14,6 +14,6 @@ tasks:
     - |
     
       go clean -modcache -cache
-      go get github.com/golang-cop/string
-      go get github.com/golang-cop/result
+      go get github.com/go-composites/string
+      go get github.com/go-composites/result
       go mod tidy
