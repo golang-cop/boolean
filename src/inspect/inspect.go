@@ -9,7 +9,6 @@ import (
 	"reflect"
 
 	"github.com/davecgh/go-spew/spew"
-	Array "github.com/go-composites/array/src"
 	Error "github.com/go-composites/error/src"
 	MethodNotImplemented "github.com/go-composites/error/src/method_not_implemented"
 	NullError "github.com/go-composites/error/src/null"
@@ -17,6 +16,14 @@ import (
 	Result "github.com/go-composites/result/src"
 	String "github.com/go-composites/string/src"
 )
+
+// firstable is the one-method structural view of any collection (e.g.
+// Array.Interface) that Inspect needs from String.Split's payload. Asserting
+// to this local interface instead of importing the array package breaks the
+// array → boolean → inspect → array import cycle without changing behavior.
+type firstable interface {
+	First() Result.Interface
+}
 
 type Interface interface {
 	HasError() bool
@@ -50,7 +57,7 @@ func New(obj interface{}) Interface {
 		result.error = stringSplitResult.Error()
 	} else {
 		interfaceTypeResult := stringSplitResult.Payload()
-		firstResult := interfaceTypeResult.(Array.Interface).First()
+		firstResult := interfaceTypeResult.(firstable).First()
 		if firstResult.HasError() {
 			result.error = firstResult.Error()
 		} else {
