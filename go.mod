@@ -1,19 +1,19 @@
 module github.com/go-composites/boolean
 
-go 1.21.6
+go 1.26.4
 
 require (
 	github.com/davecgh/go-spew v1.1.1
-	github.com/go-composites/error v0.0.0-20260620115051-f65a69bcd912
-	github.com/go-composites/null v0.0.0-20260620115053-4c4729da2abd
-	github.com/go-composites/result v0.0.0-20260620115446-ce5eeb95ac2c
-	github.com/go-composites/string v0.0.0-20260620115524-05db89e5fd1e
+	github.com/go-composites/error v0.0.0-20260621061850-8f949885a586
+	github.com/go-composites/null v0.0.0-20260621061849-c8074799d5aa
+	github.com/go-composites/result v0.0.0-20260621061851-32adc2fb3ac2
+	github.com/go-composites/string v0.0.0-20260621062835-91506e1e3f94
 	github.com/onsi/ginkgo/v2 v2.19.0
 	github.com/onsi/gomega v1.33.1
 )
 
 require (
-	github.com/go-composites/array v0.0.0-20260620115504-b04e686db10b // indirect
+	github.com/go-composites/array v0.0.0-20260621062820-1aa11b71d5d6 // indirect
 	github.com/go-logr/logr v1.4.1 // indirect
 	github.com/go-task/slim-sprig/v3 v3.0.0 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
