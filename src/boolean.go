@@ -28,10 +28,20 @@ Given a b Go boolean
 
 Return a new Boolean.Interface with a data.value set to b.
 */
+// The two boolean values are immutable, so they are interned as shared
+// singletons — like a VM's true/false. New/True/False then allocate nothing,
+// which matters because predicates (Any/All/Equal, array combinators) produce
+// booleans on hot paths.
+var (
+	falseValue = &data{value: false}
+	trueValue  = &data{value: true}
+)
+
 func New(b bool) Interface {
-	return &data{
-		value: b,
+	if b {
+		return trueValue
 	}
+	return falseValue
 }
 
 /*
