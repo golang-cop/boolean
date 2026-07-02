@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/davecgh/go-spew/spew"
 	Error "github.com/go-composites/error/src"
 	MethodNotImplemented "github.com/go-composites/error/src/method_not_implemented"
 	NullError "github.com/go-composites/error/src/null"
@@ -48,32 +47,24 @@ func New(obj interface{}) Interface {
 		objData: Null.New(),
 	}
 
+	// reflect.TypeOf(obj).String() is a dotted, package-qualified type name
+	// (e.g. "Boolean.data"); its first "."-separated segment is the package
+	// component. String.Split always yields at least one element and First()
+	// always succeeds on that non-empty collection, so the unwrap is total.
 	stringSplitResult := String.New(
 		String.WithGoString(reflect.TypeOf(obj).String()),
 	).Split(`.`)
-	//spew.Dump(stringSplitResult, stringSplitResult.HasError())
-	//panic(`BAM`)
-	if stringSplitResult.HasError() {
-		result.error = stringSplitResult.Error()
-	} else {
-		interfaceTypeResult := stringSplitResult.Payload()
-		firstResult := interfaceTypeResult.(firstable).First()
-		if firstResult.HasError() {
-			result.error = firstResult.Error()
-		} else {
-			objType := firstResult.Payload().(String.Interface).ToGoString()
-			result.objType = String.New(
-				String.WithGoString(objType),
-			)
-			result.objAddr = String.New(
-				String.WithGoString(
-					fmt.Sprintf("%p", &obj),
-				),
-			)
-			result.objData = obj
-		}
-	}
-	spew.Dump(result)
+	firstResult := stringSplitResult.Payload().(firstable).First()
+	objType := firstResult.Payload().(String.Interface).ToGoString()
+	result.objType = String.New(
+		String.WithGoString(objType),
+	)
+	result.objAddr = String.New(
+		String.WithGoString(
+			fmt.Sprintf("%p", &obj),
+		),
+	)
+	result.objData = obj
 	return result
 }
 
@@ -124,7 +115,6 @@ func (d data) Data() Result.Interface {
 }
 func (d data) ToGoString() string {
 	result := d.Data()
-	//spew.Dump(result)
 	if result.HasError() {
 		message := result.Error().Message()
 		panic(message)
